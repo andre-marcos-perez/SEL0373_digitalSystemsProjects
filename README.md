@@ -4,6 +4,9 @@
 
   * André Marcos Perez, undergraduate student.
   * andre.marcos.perez@usp.br
+  
+  * Leonardo Nunes Parente, undergraduate student.
+  * leonardo.parente@usp.br
 
 @ Description
 
