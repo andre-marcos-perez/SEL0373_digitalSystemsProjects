@@ -10,7 +10,7 @@
 
 @ Description
 
-  * Repository for resolution of exercises and study cases for the discipline SEL0373 Digital Systems Projects, offered on the 7th period (2017/1) for electronic engineering students by professor Evandro Rodrigues from the Department of Electrical and Computer Engineering at the São Carlos Engineering School of the University of São Paulo | Brazil.
+  * Repository for the discipline SEL0373 Digital Systems Projects, offered on the 7th period (2017/1) for electronic engineering students by professor Evandro Rodrigues from the Department of Electrical and Computer Engineering at the São Carlos Engineering School of the University of São Paulo | Brazil.
 
   * http://www.sel.eesc.usp.br/sel/
   * http://www.eesc.usp.br/portaleesc/en/
