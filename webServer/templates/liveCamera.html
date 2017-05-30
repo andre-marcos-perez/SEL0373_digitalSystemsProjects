@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<title>SEL373 | Live Camera</title>
 		<link rel="stylesheet" type="text/css" href="/static/indexStyle.css"/>
 		<link rel="icon" type="image/png" href="/static/images/favicon-32x32.png"/>
 	</head>
-
 	<body>
 		<h1>Camera Livestream!</h1>
 		<div>
-		<img src="/static/images/downArrow.png" alt="left"/>
-		<img src="/static/images/rightArrow.png" alt="right"/>
-		<img src="/static/images/downArrow.png" alt="down"/>
-		<img src="/static/images/upArrow.png" alt="up"/>
+			<form method="post">
+				<input type="image" src="/static/images/leftArrow.png" alt="up" name="direction" value="left"/>
+			</form>
+			<form method="post">
+				<input type="image" src="/static/images/rightArrow.png" alt="up" name="direction" value="right"/>
+			</form>
+			<form method="post">	        
+				<input type="image" src="/static/images/downArrow.png" alt="down" name="direction" value="down"/>
+			</form>
+			<form method="post">
+				<input type="image" src="/static/images/upArrow.png" alt="up" name="direction" value="up"/>
+			</form>
 		</div>
 		<img src="{{ url_for('videoStreaming') }}"/>
 	</body>
-
 </html>
