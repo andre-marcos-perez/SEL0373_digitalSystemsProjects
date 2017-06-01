@@ -2,7 +2,7 @@
 	
 	<head>
         
-		<title>SEL373 | Home</title>
+		<title>SEL0373 | Home</title>
 
 		<!--LINKS-->
 		
@@ -41,27 +41,46 @@
 		
 		<header>
 		
-			<nav>
+				<nav>
     				<div class="nav-wrapper container">
       				
 					<a href="index.html" class="brand-logo">SEL0373</a>
       					<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 					
       					<ul class="right hide-on-med-and-down">
-        					<li><a href="sass.html">Projeto</a></li>
+						<li class="active"><a href="index.html">Início</a></li>
+        					<li><a href="index.html">Projeto</a></li>
 						<li><a href="https://github.com/andreMarcosPerez/SEL0373_digitalSystemsProjects" target="_blank">Github</a></li>
-        					<li><a href="badges.html">Sobre nós</a></li>
-        					<li><a href="collapsible.html">Login</a></li>
+        					<li><a href="index.html">Sobre nós</a></li>
+        					<li><a href="index.html">Login</a></li>
       					</ul>
       				
 					<ul class="side-nav" id="mobile-demo">
-        					<li><a href="sass.html">Projeto</a></li>
+						<li>
+							<div class="row">
+								<div class="col s12 m6">
+									<div class="card red lighten-2">
+										<div class="card-content white-text">
+											<span class="card-title center"><b>SEL0373</b></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li><div class="divider"></div></li>
+						<li><a href="index.html">Início</a></li>
+						<li><div class="divider"></div></li>
+        					<li><a href="index.html">Projeto</a></li>
+						<li><div class="divider"></div></li>
 						<li><a href="https://github.com/andreMarcosPerez/SEL0373_digitalSystemsProjects" target="_blank">Github</a></li>
-        					<li><a href="badges.html">Sobre nós</a></li>
-        					<li><a href="collapsible.html">Login</a></li>
+						<li><div class="divider"></div></li>
+        					<li><a href="index.html">Sobre nós</a></li>
+						<li><div class="divider"></div></li>
+        					<li><a href="index.html">Login</a></li>
+						<li><div class="divider"></div></li>
       					</ul>
 					
-	    			</div>
+    				</div>
 			</nav>
 		
 		</header>
@@ -69,11 +88,10 @@
 		<main>
 		
 			<div class="container">
-				
+			
 				<h1>Projeto de Sistemas Digitais</h1>
-		
+	
 				{% block content %}
-
 				{% endblock %}
 				
 			</div>
@@ -84,18 +102,23 @@
           
 			<div class="container">
 				<div class="row">
+			
 					<div class="col l6 s12">
-						<h5 class="white-text">Footer Content</h5>
-						<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-					</div>
-					<div class="col l6 s12">
-						<h5 class="white-text">Links</h5>
+						<h5 class="white-text">Saiba mais</h5>
 						<ul>
-							<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-							<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-							<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-							<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+							<li><a class="grey-text text-lighten-3" target="_blank" href="http://www.saocarlos.usp.br/">Universidade de São Paulo, Campus São Carlos</a></li>
+							<li><a class="grey-text text-lighten-3" target="_blank" href="http://www.eesc.usp.br/">Escola de Engenharia de São Carlos</a></li>
+							<li><a class="grey-text text-lighten-3" target="_blank" href="http://www.sel.eesc.usp.br/">Departamento de Engenharia Elétrica e de Computação</a></li>
 						</ul>
+					</div>
+				
+					<div class="col l6 s12">
+						<h5 class="white-text">Licença de uso</h5>
+						<p class="grey-text text-lighten-3"><b>Todo</b> o trabalho apresentado neste site foi desenvolvido pelos autores na disciplina <b>SEL0373 Projeto de Sistemas Digitais</b> e esta licenciado com uma licença 
+						<a class="grey-text text-lighten-3" target="_blank" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+							<b>CC BY-NC-SA 4.0 Internacional.</b>
+						</a>
+						</p>	
 					</div>
 				</div>
 			</div>
@@ -103,21 +126,21 @@
 			<div class="footer-copyright">
 				<div class="container">
 					<a class="grey-text text-lighten-4" href="https://www.linkedin.com/in/andremarcosperez/" target="_blank"> © 2017 | <b>André Perez</b></a> e <a  class="grey-text text-lighten-4" href="https://www.linkedin.com/in/leonardoparente/" target="_blank"><b>Leonardo Parente</b></a>
+					<a class="right" rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"/></a>
 				</div>
 			</div>
         
 		</footer>
-				
+
 		<!-- JavaScript -->
 				
       		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 				
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-	
+		
 		<script>
 
 			$(".button-collapse").sideNav({
-
 				menuWidth: 250,
 				closeOnClick: true,
 				draggable: true
