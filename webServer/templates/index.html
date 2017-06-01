@@ -1,52 +1,130 @@
 <html>
+	
 	<head>
-                <title>SEL373 | Index</title>
+        
+		<title>SEL373 | Home</title>
 
-		<!-- Compiled and minified CSS -->
-	        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+		<!--LINKS-->
+		
+		<!--Remote: Compiled and minified CSS -->
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+		<!--Remote: Google Icon Font-->
+      	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Local: Favicon-->
+        <link rel="stylesheet" type="text/css" href="/static/home.css"/>
+        <link rel="icon" type="image/png" href="/static/images/favicon-32x32.png"/>
+		
+		<!--META-->
+		
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  		<!-- Compiled and minified JavaScript -->
-  		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>	
+		<!--CSS-->
+		
+		<style>
+		
+			body {
+				display: flex;
+				min-height: 100vh;
+				flex-direction: column;
+			}
 
-		<!--Import Google Icon Font-->
-      		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      
-		<!--Import materialize.css-->
-      		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
-      		<!--Let browser know website is optimized for mobile-->
-      		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-		<!--Local links-->
-                <link rel="stylesheet" type="text/css" href="/static/indexStyle.css"/>
-                <link rel="icon" type="image/png" href="/static/images/favicon-32x32.png"/>
-
-	<head>
+			main {
+				flex: 1 0 auto;
+			}
+		
+		</style>
+		
+	</head>
 
 	<body>
 		
-		  <nav>
-    			<div class="nav-wrapper">
-      				<a href="#!" class="brand-logo">SEL0373</a>
+		<header>
+		
+			<nav>
+    			<div class="nav-wrapper container">
+      				
+					<a href="index.html" class="brand-logo">SEL0373</a>
       				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+					
       				<ul class="right hide-on-med-and-down">
         				<li><a href="sass.html">Projeto</a></li>
-        				<li><a href="badges.html">Sobre Nos</a></li>
+						<li><a href="https://github.com/andreMarcosPerez/SEL0373_digitalSystemsProjects" target="_blank">Github</a></li>
+        				<li><a href="badges.html">Sobre nós</a></li>
         				<li><a href="collapsible.html">Login</a></li>
       				</ul>
-      				<ul class="side-nav" id="mobile-demo">
+      				
+					<ul class="side-nav" id="mobile-demo">
         				<li><a href="sass.html">Projeto</a></li>
-        				<li><a href="badges.html">Sobre Nos</a></li>
+						<li><a href="https://github.com/andreMarcosPerez/SEL0373_digitalSystemsProjects" target="_blank">Github</a></li>
+        				<li><a href="badges.html">Sobre nós</a></li>
         				<li><a href="collapsible.html">Login</a></li>
       				</ul>
+					
     			</div>
-  		</nav>
+			</nav>
+		
+		</header>
+		
+		<main>
+		
+			<div class="container">
+				
+				<h1>Projeto de Sistemas Digitais</h1>
+		
+				{% block content %}
 
-		<h1>Projeto de Sistemas Digitais</h1>
+				{% endblock %}
+				
+			</div>
+		
+		</main>
+				
+		<footer class="page-footer">
+          
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<h5 class="white-text">Footer Content</h5>
+						<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+					</div>
+					<div class="col l6 s12">
+						<h5 class="white-text">Links</h5>
+						<ul>
+							<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+							<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+							<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+							<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+          
+			<div class="footer-copyright">
+				<div class="container">
+					<a class="grey-text text-lighten-4" href="https://www.linkedin.com/in/andremarcosperez/" target="_blank"> © 2017 | <b>André Perez</b></a> e <a  class="grey-text text-lighten-4" href="https://www.linkedin.com/in/leonardoparente/" target="_blank"><b>Leonardo Parente</b></a>
+				</div>
+			</div>
+        
+		</footer>
+				
+		<!-- JavaScript -->
+				
+      	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+				
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+	
+		<script>
 
-		 <!--Import jQuery before materialize.js-->
-      		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      		<script type="text/javascript" src="js/materialize.min.js"></script>
-		<script>$( document ).ready(function(){$(".button-collapse").sideNav();})</script>
+			$(".button-collapse").sideNav({
+
+				menuWidth: 250,
+				closeOnClick: true,
+				draggable: true
+			});		
+			
+		</script>
+		
 	</body>
+	
 </html>
