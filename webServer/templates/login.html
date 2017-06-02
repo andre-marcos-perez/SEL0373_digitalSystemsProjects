@@ -8,8 +8,34 @@
 	
 	{% block content %}
 			
-		<h1>Projeto de Sistemas Digitais</h1>
-		<h3>Login</h3>
+	<div class="container">
+		<div class="valign-wrapper" style="min-height:300pt">
+			<div class="row">
+				<div class="col l12 offset-l6">
+					<div class="card-panel red lighten-2">
+						<div class="card-content white-text center">
+							<h5 class="grey-text text-lighten-3" class="card-title"><b>Login</b></h5>
+						</div>
+						<div class="row">
+							<div class="input-field col l12">
+								<i class="material-icons prefix" style="color: white">account_circle</i>
+								<input id="userName" type="text" style="border-bottom: 1px solid #eeeeee; box-shadow: 0 1px 0 0 #eeeeee;" class="validate white-text">
+								<label class="white-text" for="userName">Usuário</label>
+							</div>
+							<div class="input-field col l12">
+								<i class="material-icons prefix" style="color: white">lock_outline</i>
+								<input id="userPassword" type="text" style="border-bottom: 1px solid #eeeeee; box-shadow: 0 1px 0 0 #eeeeee;" class="validate white-text">
+								<label class="white-text" for="userPassword">Senha</label>
+							</div>
+						</div>
+					</div>
+					<div class="col l12 center">
+						<a class="waves-effect waves-light btn red lighten-2">Entrar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	{% endblock %}
 				
