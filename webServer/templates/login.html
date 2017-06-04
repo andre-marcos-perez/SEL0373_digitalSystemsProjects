@@ -8,34 +8,36 @@
 	
 	{% block content %}
 			
-	<div class="container">
-		<div class="valign-wrapper" style="min-height:300pt">
+		<div class="container">
 			<div class="row">
-				<div class="col s12 offset-l6">
-					<div class="card-panel red lighten-2">
-						<div class="card-content white-text center">
-							<h5 class="card-title"><b>Login</b></h5>
-						</div>
-						<div class="row">
-							<div class="input-field col s12">
-								<i class="material-icons prefix" style="color: white">account_circle</i>
-								<input id="userName" type="text" style="border-bottom: 1px solid #eeeeee; box-shadow: 0 1px 0 0 #eeeeee;" class="validate white-text">
-								<label class="white-text" for="userName">Usuário</label>
+				<form action="/login/" method="post" class="col s12 m8 offset-m2 l6 offset-l3">
+					<div class="card red lighten-2 white-text">
+						<div class="card-content">
+							<h5 class="card-title center"><b>Login</b></h5>
+							<div class="row">
+								<div class="input-field col s12">
+									<i class="material-icons prefix" style="color: white">account_circle</i>
+									<input name="userName" id="userName" type="text" class="validate white-text" style="border-bottom: 1px solid #eeeeee; box-shadow: 0 1px 0 0 #eeeeee;">
+									<label class="white-text" for="userName">Usuário</label>
+								</div>
+								<div class="input-field col s12">
+									<i class="material-icons prefix" style="color: white">lock_outline</i>
+									<input name="userPassword" id="userPassword" type="password" class="validate white-text" style="border-bottom: 1px solid #eeeeee; box-shadow: 0 1px 0 0 #eeeeee;">
+									<label class="white-text" for="userPassword">Senha</label>
+								</div>
 							</div>
-							<div class="input-field col s12">
-								<i class="material-icons prefix" style="color: white">lock_outline</i>
-								<input id="userPassword" type="text" style="border-bottom: 1px solid #eeeeee; box-shadow: 0 1px 0 0 #eeeeee;" class="validate white-text">
-								<label class="white-text" for="userPassword">Senha</label>
+						</div>
+						<div class="card-action">
+							<div class="row">
+								<div class="col s12 center">
+									<button class="waves-effect waves-light btn red lighten-3">Entrar</button>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col s12 center">
-						<a class="waves-effect waves-light btn red lighten-2">Entrar</a>
-					</div>
-				</div>
+				</form>
 			</div>
 		</div>
-	</div>
 
 	{% endblock %}
 				
