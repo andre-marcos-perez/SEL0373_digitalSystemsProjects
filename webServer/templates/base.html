@@ -27,6 +27,15 @@
 			}
 
 		</style>
+		<!--JavaScript-->
+		<script>
+		
+			var info = {
+				'is_logged': {{ "true" if session.is_logged else "false" }},
+			};
+		
+		</script>
+		
 	</head>
 	<body>
 		<header>
@@ -40,7 +49,7 @@
 							<li {% if request.path == "/projeto/" %} class="active"{% endif %}><a href="/projeto">Projeto</a></li>
 							<li><a href="https://github.com/andreMarcosPerez/SEL0373_digitalSystemsProjects" target="_blank">Github</a></li>
 							<li {% if request.path == "/sobreNos/" %} class="active"{% endif %}><a href="/sobreNos">Sobre nós</a></li>
-							{% if session.logged_in %}
+							{% if session.is_logged %}
 							<li {% if request.path == "/sistema/" %} class="active"{% endif %}><a href="/login">Sistema</a></li>
 							{% else %}
 							<li {% if request.path == "/login/" %} class="active"{% endif %}><a href="/login">Login</a></li>
@@ -70,7 +79,7 @@
 				<li><div class="divider"></div></li>
 				<li {% if request.path == "/sobreNos/" %} class="collection-item active" {% else %} class="collection-item"{% endif %}><a href="/sobreNos">Sobre nós</a></li>
 				<li><div class="divider"></div></li>
-				{% if session.logged_in %}
+				{% if session.is_logged %}
 				<li {% if request.path == "/sistema/" %} class="collection-item active" {% else %} class="collection-item"{% endif %}><a href="/login">Sistema</a></li>
 				{% else %}
 				<li {% if request.path == "/login/" %} class="collection-item active" {% else %} class="collection-item"{% endif %}><a href="/login">Login</a></li>
