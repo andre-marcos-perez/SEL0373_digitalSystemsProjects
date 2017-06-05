@@ -25,7 +25,7 @@
 									<input name="userPassword" id="userPassword" type="password" class="validate white-text" style="border-bottom: 1px solid #eeeeee; box-shadow: 0 1px 0 0 #eeeeee;">
 									<label class="white-text" for="userPassword">Senha</label>
 								</div>
-								{% if error != 'None' %}
+								{% if error %}
 									<p>{{ error }}</p>
 								{% endif %}
 							</div>
