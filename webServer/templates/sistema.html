@@ -14,7 +14,7 @@
 		<form action="/sistema/" method="post">
 			<button class="waves-effect waves-light btn red lighten-3">Sair</button>
 		<form>
-		<img class="circle responsive-img hoverable" id="frame" src="/static/images/andrePerez_200.jpg"/>
+		<img class="responsive-img" id="frame" src="/static/images/frame.jpg"/>
 	</div>
 
 	{% endblock %}
@@ -25,7 +25,7 @@
 	
 			setInterval(function(){
  
-				$('#frame').attr("src", "/frame.jpg?timestamp=" + new Date().getTime());
+				$('#frame').attr("src", "/static/images/frame.jpg?timestamp=" + new Date().getTime());
  
 			},500);
 	
