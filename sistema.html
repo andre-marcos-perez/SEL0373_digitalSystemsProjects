@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+	{% block title %}
+	
+		Sistema
+	
+	{% endblock %}
+				
+	{% block content %}
+	
+	<div class="container">	
+		<h1>Projeto de Sistemas Digitais</h1>
+		<h3>Sistema</h3>
+		<form action="/sistema/" method="post">
+			<button class="waves-effect waves-light btn red lighten-3">Sair</button>
+		<form>
+		<img class="circle responsive-img hoverable" id="frame" src="frame.jpg"/>
+	</div>
+
+	{% endblock %}
+	
+	{% block scripts %}
+	
+		<script>
+	
+			setInterval(function(){
+ 
+				$('#frame').attr("src", "/frame.jpg?timestamp=" + new Date().getTime());
+ 
+			},100);
+	
+		</script>
+	
+	{% endblock %}
