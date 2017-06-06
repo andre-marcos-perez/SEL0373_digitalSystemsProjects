@@ -25,6 +25,10 @@
 			main {
 				flex: 1 0 auto;
 			}
+			
+			{% block styles %}
+			
+			{% endblock %}
 
 		</style>
 		<!--JavaScript-->
@@ -45,8 +49,7 @@
 						<a href="/" class="brand-logo">SEL0373</a>
 						<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 						<ul class="right hide-on-med-and-down">
-							<li {% if request.path == "/" %} class="active"{% endif %}><a href="/">Início</a></li>
-							<li {% if request.path == "/projeto/" %} class="active"{% endif %}><a href="/projeto">Projeto</a></li>
+							<li {% if request.path == "/" %} class="active"{% endif %}><a href="/">Projeto</a></li>
 							<li><a href="https://github.com/andreMarcosPerez/SEL0373_digitalSystemsProjects" target="_blank">Github</a></li>
 							<li {% if request.path == "/sobreNos/" %} class="active"{% endif %}><a href="/sobreNos">Sobre nós</a></li>
 							{% if session.is_logged %}
@@ -71,9 +74,7 @@
 					</div>
 				</li>
 				<li><div class="divider"></div></li>
-				<li {% if request.path == "/" %} class="collection-item active" {% else %} class="collection-item"{% endif %}><a href="/">Início</a></li>
-				<li><div class="divider"></div></li>
-				<li {% if request.path == "/projeto/" %} class="collection-item active" {% else %} class="collection-item"{% endif %}><a href="/projeto">Projeto</a></li>
+				<li {% if request.path == "/" %} class="collection-item active" {% else %} class="collection-item"{% endif %}><a href="/">Projeto</a></li>
 				<li><div class="divider"></div></li>
 				<li><a href="https://github.com/andreMarcosPerez/SEL0373_digitalSystemsProjects" target="_blank">Github</a></li>
 				<li><div class="divider"></div></li>

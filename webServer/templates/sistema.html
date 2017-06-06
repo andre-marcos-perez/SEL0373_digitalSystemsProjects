@@ -5,12 +5,61 @@
 		Sistema
 	
 	{% endblock %}
+	
+	{% block styles %}
+	
+		.switch label input[type=checkbox]:checked+.lever {
+			background-color: #ef9a9a ;
+		}
+
+		.switch label input[type=checkbox]:checked+.lever:after {
+			background-color: white ;
+		}
+		
+		.switch label .lever {
+			background-color: #ef9a9a;
+		}
+			
+	{% endblock %}
 				
 	{% block content %}
 	
 	<div class="container">	
 		<div class="row">
 			<div class="col l6 s12">
+				<div class="card white-text">
+					<div class="card-content red lighten-2">
+						<span class="card-title center"><b>Fechadura</b></span>
+					</div>
+					<div class="card-action red lighten-2">
+						<table class="centered white-text">
+							<thead>
+								<tr>
+									<th>Icone</th>
+									<th>Item</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><i class="material-icons center">lock</i></td>
+									<td>Porta</td>
+									<td><div class="switch"><label><i class="material-icons center">lock_open</i><input type="checkbox"><span class="lever"></span><i class="material-icons center">lock_outline</i></label></div></td>
+								</tr>
+								<tr>
+									<td><i class="material-icons center">alarm</i></td>
+									<td>Alarme</td>
+									<td><div class="switch"><label><i class="material-icons center">alarm_off</i><input type="checkbox"><span class="lever"></span><i class="material-icons center">alarm_on</i></label></div></td>
+								</tr>
+								<tr>
+									<td><i class="material-icons center">battery_std</i></td>
+									<td>Bateria</td>
+									<td><i class="material-icons center">battery_charging_full</i><td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			
 			</div>
 			<div class="col l6 s12">
@@ -39,7 +88,7 @@
 							</div>
 							<div class="col s12 center">
 								<form action="/sistema/" method="post">
-									<button class="waves-effect waves-light btn red lighten-2">Sair</button>
+									<button class="waves-effect waves-light btn red lighten-3">Sair</button>
 								</form>
 							</div>
 						</div>
