@@ -35,6 +35,11 @@
 									<input name="deviceId" id="deviceId" type="text" class="validate white-text" style="border-bottom: 1px solid #eeeeee; box-shadow: 0 1px 0 0 #eeeeee;">
 									<label class="white-text" for="deviceId">Dispositivo</label>
 								</div>
+								<div class="col s12">
+								{% if error %}
+									<p class="center">{{ error }}</p>
+								{% endif %}
+								</div>
 							</div>
 						</div>
 						<div class="card-action">
