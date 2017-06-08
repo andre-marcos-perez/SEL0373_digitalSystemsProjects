@@ -19,14 +19,7 @@
 		
 		{% endblock %}
 		<!--JavaScript-->
-		<script>
-		
-			var info = {
-				'is_logged': {{ "true" if session.is_logged else "false" }},
-			};
-		
-		</script>
-		
+		<script type="text/javascript" src="/static/javascript/base_sideNavBar.js"></script>
 	</head>
 	<body>
 		<header>
@@ -108,23 +101,9 @@
 		<!-- JavaScript -->
       	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>	
-		<script>
-				
-			$(document).ready(function(){
-			
-				$(".button-collapse").sideNav({
-
-					menuWidth: 250,
-					closeOnClick: true,
-					draggable: true
-				});			
-			});		
-
-		</script>
-		
+		<script type="text/javascript" src="/static/javascript/base_sideNavBar.js"></script>
 		{% block scripts %}
 			
 		{% endblock %}
-			
 	</body>
 </html>
