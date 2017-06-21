@@ -98,26 +98,25 @@
 	
 		<script>
 		
-			setInterval(function(){
- 
-				var info = {
-				'is_locked': {{ "true" if sistema['is_locked'] else "false" }},
-				};
-				
-				if (info.is_locked) {
-    
-					$('#lock').prop('checked', true);
+			function update(){
+
+				$.getJSON("/getData/",function(data){ 
 					
-				} else { 
+					if (data.mqttData) {
+    
+						$('#lock').prop('checked', true);
+					
+					} else { 
  
-					$('#lock').prop('checked', false);
-				}
-				
-				
-				
+						$('#lock').prop('checked', false);
+					}
+					
+				});
+			};
+		
+			setInterval(function(){
 				//$('#frame').attr("src", "/static/images/frame.jpg?timestamp=" + new Date().getTime());
 				//$('#frame').attr("src", "/static/images/frame.jpg");
-
 			},500);
 	
 		</script>
