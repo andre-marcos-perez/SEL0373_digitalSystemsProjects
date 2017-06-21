@@ -79,6 +79,7 @@ def webRender_liveCamera():
 
 
 def gen(camera):
+
     #while True:
     frame = camera.get_frame()
     yield (b'--frame\r\n'
