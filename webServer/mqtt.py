@@ -1,4 +1,5 @@
 import paho.mqtt.client as mqtt
+from time import sleep
 
 
 # Mqtt Object
@@ -50,6 +51,7 @@ class Mqtt(object):
         print("Connected with result code " + str(rc))
         client.subscribe("home/hallSensor")
         client.subscribe("home/pirSensor")
+	client.subscribe("home/battery")
 
     @staticmethod
     def on_message(client, userdata, msg):
@@ -82,3 +84,14 @@ class Mqtt(object):
         """
 
         return Mqtt.message
+
+    def publish(self, status):
+
+        self.client.publish("home/lock", status)
+        print "home/lock: " + status
+
+"""myMqtt = Mqtt()
+while True:
+    myMqtt.publish('2')
+    sleep(2)
+"""
