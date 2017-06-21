@@ -96,46 +96,59 @@ def webRender_liveLocker():
 def getSubData():
 
     mqtt = Mqtt()
-    status = True
+    status = False
     if mqtt.getPayload() != None :
-	    topic,payload = mqtt.getPayload().split('&')
-	    if topic == 'home/hallSensor' :
-		    if payload == 'o':
-			    status = False
-		    else: 
-			    status = True
-				
+        topic,payload = mqtt.getPayload().split('&')
+        if topic == 'home/hallSensor' :
+            if payload == 'o':
+                status = False
+            else: 
+                status = True
+		
     return jsonify(status = status)
 
 @flaskServer.route('/getDoorStatus/', methods=['GET'])
 def getDoorStatus():
 
     mqtt = Mqtt()
-	mqtt.publish('h')
-    topic,payload = mqtt.getPayload().split('&')	
-    return jsonify(status = int(payload))
+    mqtt.publish('h')
+    if mqtt.getPayload() != None :
+        topic,payload = mqtt.getPayload().split('&')	
+        return jsonify(status = int(payload))
+    else:
+        print "Payload is empty"
+        return None
 	
 @flaskServer.route('/getMotorStatus/', methods=['GET', 'POST'])
 def getMotorStatus():
 
     mqtt = Mqtt()
-	mqtt.publish('m')
-	topic,payload = mqtt.getPayload().split('&')
-	if request.method == 'GET':
-        return jsonify(status = int(payload))
-	else:
-	    if payload == True :
-	        mqtt.publish(1)
-		else:
-		    mqtt.publish(0)
+    mqtt.publish('m')
+    if mqtt.getPayload() != None :
+        topic,payload = mqtt.getPayload().split('&')
+        if request.method == 'GET':
+            return jsonify(status = int(payload))
+        else:
+            if payload == True :
+                mqtt.publish(1)
+            else:
+                mqtt.publish(0)
+    else:
+        print "Payload is empty"
+        return None
+
 	
 @flaskServer.route('/getBatteryStatus/', methods=['GET'])
 def getBatteryStatus():
 
     mqtt = Mqtt()
-	mqtt.publish('b')
-    topic,payload = mqtt.getPayload().split('&')
-    return jsonify(status = int(payload))
+    mqtt.publish('b')
+    if mqtt.getPayload() != None :
+        topic,payload = mqtt.getPayload().split('&')
+        return jsonify(status = int(payload))
+    else:
+        print "Payload is empty"
+        return None
 	
 if __name__ == '__main__':
     flaskServer.run(host='192.168.1.111', port=8186, debug='TRUE')

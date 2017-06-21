@@ -86,7 +86,7 @@ class Mqtt(object):
         return Mqtt.message
 
     def publish(self, id):
-	    """self.publish
+	"""self.publish
         @Description:
 
         @Args:
