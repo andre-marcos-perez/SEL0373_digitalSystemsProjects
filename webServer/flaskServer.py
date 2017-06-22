@@ -6,8 +6,6 @@ from mqtt import Mqtt
 flaskServer = Flask(__name__)
 flaskServer.secret_key = 'random key'
 
-sistema = {'is_locked' : True}
-
 # inicio
 @flaskServer.route('/')
 def webRender_inicio():
@@ -98,14 +96,15 @@ def webRender_liveLocker():
 def getData():
 
     myMqtt = Mqtt()
+	status = True
 	topic,msg = myMqtt.getPayload().split('&')
 	if topic == 'home/hallSensor' :
 		if msg == 'o':
-			sistema['is_locked'] = False
+			status = False
 		else: 
-			sistema['is_locked'] = True
+			status = True
 	
-    """return jsonify(mqttData = mqttData)"""
+    return jsonify(status = status)
 
 if __name__ == '__main__':
     flaskServer.run(host='192.168.1.111', port=8186, debug='TRUE')
