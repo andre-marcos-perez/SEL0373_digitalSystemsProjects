@@ -6,6 +6,8 @@ from mqtt import Mqtt
 flaskServer = Flask(__name__)
 flaskServer.secret_key = 'random key'
 
+myMqtt = None
+
 # inicio
 @flaskServer.route('/')
 def webRender_inicio():
@@ -54,6 +56,7 @@ def webRender_sistema():
     if request.method == 'POST':
         session.pop('is_logged', None)
         return render_template('login.html', error = None)        
+	myMqtt = Mqtt()
     return render_template('sistema.html')
 
 # videoStreaming
@@ -95,7 +98,6 @@ def webRender_liveLocker():
 @flaskServer.route('/getData/', methods=['GET'])
 def getData():
 
-    myMqtt = Mqtt()
     status = True
     if myMqtt.getPayload() != None :
 	    topic,msg = myMqtt.getPayload().split('&')
