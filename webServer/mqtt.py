@@ -85,10 +85,11 @@ class Mqtt(object):
 
         return Mqtt.message
 
-    def publish(self, status):
+    def publish(self, topic, msg):
 
-        self.client.publish("home/lock", status)
-        print "home/lock: " + status
+        self.client.publish(topic, msg)
+        print topic + ": " + msg
+		return topic + "&" + msg
 
 """myMqtt = Mqtt()
 while True:
