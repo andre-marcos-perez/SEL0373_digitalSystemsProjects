@@ -67,12 +67,12 @@ class Mqtt(object):
             void
         """
 
-        Mqtt.message = msg.topic + " " + str(msg.payload)
+        Mqtt.message = msg.topic + "&" + str(msg.payload)
         print Mqtt.message
 
     # Method: Class
 
-    def printPayload(self):
+    def getPayload(self):
         """Mqtt.printPayload
         @Description:
 
