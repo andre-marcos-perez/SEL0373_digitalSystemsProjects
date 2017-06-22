@@ -31,6 +31,7 @@ const char* password = "abc01234def";
 const char* mqtt_server = "192.168.1.111";
 bool hall_flag;
 bool motion_flag;
+bool motor_flag;
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -82,27 +83,40 @@ void callback(char* topic, byte* payload, unsigned int length) {
     digitalWrite(D6, HIGH);   // OPEN THE DOOR
     delay(500);
     digitalWrite(D6, LOW);
+    motor_flag = true;
     commandLED();
   } 
   if ((char)payload[0] == '1'){
     digitalWrite(D7, HIGH);  // CLOSE THE DOOR
     delay(500);
     digitalWrite(D7, LOW);
+    motor_flag = false;
     commandLED();
   }
   //Publish battery level
   if ((char)payload[0] == '2'){
-      //float value = ((analogRead(A0)-4)*5)/235;
-      int value = analogRead(A0);
-      if (value <= 3.5){
+      float value = ((analogRead(A0)-211)/76)*100 + 0.5;
+      int value2 = value;
+      if (value2 <= 30){
         digitalWrite(D1, HIGH);  
       }
-      char result[6];
-      dtostrf(value, 6, 2, result); 
-      snprintf (msg, 10, result);
+    //  char result[6];
+    //  dtostrf(value2, 6, 2, result); 
+      snprintf (msg, 10,"%d", value2);
       client.publish("home/battery", msg);
       commandLED();
   }
+  if ((char)payload[0] == 'm'){
+      snprintf (msg, 10,"%d", motor_flag);
+      client.publish("home/motor", msg);
+      commandLED();
+  }
+  if ((char)payload[0] == 'h'){
+      snprintf (msg, 10,"%d", hall_flag);
+      client.publish("home/hall", msg);
+      commandLED();
+  }
+    
 
 }
 
@@ -139,6 +153,7 @@ void setup() {
   pinMode(D2, OUTPUT);     // Initialize D2 pin as the LOW BATTERY INDICADOR LED (RED)
   digitalWrite(D6, LOW);   // Initialize Motor as Stoped
   digitalWrite(D7, LOW);   // Initialize Motor as Stoped
+  motor_flag = true;
   if (digitalRead(D3) == HIGH) {
     hall_flag = true;
   }
