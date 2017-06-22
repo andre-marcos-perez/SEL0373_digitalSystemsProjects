@@ -120,10 +120,9 @@
 				});
 			};
 		
-			setInterval(function(){
-				//$('#frame').attr("src", "/static/images/frame.jpg?timestamp=" + new Date().getTime());
-				//$('#frame').attr("src", "/static/images/frame.jpg");
-			},500);
+			$(document).ready(function(){
+				setInterval(update2,500);
+			});
 	
 		</script>
 	
