@@ -102,7 +102,7 @@
 
 				$.getJSON("/getData/",function(data){ 
 					
-					if (data.mqttData) {
+					if (data.status) {
     
 						$('#lock').prop('checked', true);
 					
