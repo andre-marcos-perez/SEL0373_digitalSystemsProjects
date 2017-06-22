@@ -97,11 +97,11 @@
 	{% block scripts %}
 	
 		<script>
-	
+		
 			setInterval(function(){
  
 				var info = {
-				'is_locked': {{ "true" if sistema.is_locked else "false" }},
+				'is_locked': {{ "true" if sistema['is_locked'] else "false" }},
 				};
 				
 				if (info.is_locked) {
@@ -112,6 +112,8 @@
  
 					$('#lock').prop('checked', false);
 				}
+				
+				
 				
 				//$('#frame').attr("src", "/static/images/frame.jpg?timestamp=" + new Date().getTime());
 				//$('#frame').attr("src", "/static/images/frame.jpg");
