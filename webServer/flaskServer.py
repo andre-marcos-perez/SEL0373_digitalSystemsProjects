@@ -96,7 +96,7 @@ def webRender_liveLocker():
 def getData():
 
     myMqtt = Mqtt()
-	status = True
+    status = True
 	if myMqtt.getPayload() != None :
 	    topic,msg = myMqtt.getPayload().split('&')
 	    if topic == 'home/hallSensor' :
