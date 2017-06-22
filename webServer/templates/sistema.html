@@ -74,7 +74,10 @@
 										</tr>
 										<tr>
 											<td>Bateria</td>
-											<td><i class="material-icons center">battery_charging_full</i><td>
+											<td>
+											<!--<i class="material-icons center">battery_charging_full</i>-->
+											<p id="battery"></p>
+											<td>
 										</tr>
 									</tbody>
 								</table>
@@ -102,10 +105,18 @@
 				//$.getJSON("/getData/",function(data){ $('#result').text(data.status)});
 
 			//};
+			
+			function updatePub(){
+			
+				$.getJSON("/publishedData/",function(data){
+				
+					$('#battery').text(data.status);
+				}); 
+			};
 		
-			function update(){
+			function updateSub(){
 
-				$.getJSON("/getData/",function(data){ 
+				$.getJSON("/subscribedData/",function(data){ 
 					
 					if (data.status) {
     
@@ -120,7 +131,8 @@
 			};
 		
 			$(document).ready(function(){
-				setInterval(update,500);
+				setInterval(updateSub,500);
+				setInterval(updatePub,800);
 			});
 	
 		</script>
