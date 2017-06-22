@@ -82,17 +82,26 @@ void callback(char* topic, byte* payload, unsigned int length) {
     digitalWrite(D6, HIGH);   // OPEN THE DOOR
     delay(500);
     digitalWrite(D6, LOW);
+    commandLED();
   } 
   if ((char)payload[0] == '1'){
     digitalWrite(D7, HIGH);  // CLOSE THE DOOR
     delay(500);
     digitalWrite(D7, LOW);
+    commandLED();
   }
   //Publish battery level
   if ((char)payload[0] == '2'){
+      //float value = ((analogRead(A0)-4)*5)/235;
       int value = analogRead(A0);
-      snprintf (msg, 10, "o");
-      client.publish("home/baterry", msg);
+      if (value <= 3.5){
+        digitalWrite(D1, HIGH);  
+      }
+      char result[6];
+      dtostrf(value, 6, 2, result); 
+      snprintf (msg, 10, result);
+      client.publish("home/battery", msg);
+      commandLED();
   }
 
 }
