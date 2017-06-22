@@ -92,8 +92,8 @@ def webRender_liveLocker():
     return render_template('liveLocker.html')
 
 # mqttData
-@flaskServer.route('/getData/', methods=['GET'])
-def getData():
+@flaskServer.route('/subscribedData/', methods=['GET'])
+def getSubData():
 
     myMqtt = Mqtt()
     status = True
@@ -107,5 +107,12 @@ def getData():
 	
     return jsonify(status = status)
 
+@flaskServer.route('/publishedData/', methods=['GET'])
+def getPubData():
+
+    myMqtt = Mqtt()
+    topic,msg = myMqtt.publish('home/lock',2).split('&')
+    return jsonify(status = msg)
+	
 if __name__ == '__main__':
     flaskServer.run(host='192.168.1.111', port=8186, debug='TRUE')
