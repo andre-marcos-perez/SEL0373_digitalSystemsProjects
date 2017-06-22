@@ -79,10 +79,8 @@ def webRender_liveCamera():
 
 
 def gen(camera):
-<<<<<<< HEAD
-=======
-    #while True:
->>>>>>> 1c6c2ffd90b7f9fc35663b39f762af132b6ad729
+
+    #while True
     frame = camera.get_frame()
     yield (b'--frame\r\n'
            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
