@@ -96,13 +96,14 @@ def webRender_liveLocker():
 def getData():
 
     myMqtt = Mqtt()
-    status = True
-    topic,msg = myMqtt.getPayload().split('&')
-    if topic == 'home/hallSensor' :
-        if msg == 'o':
-            status = False
-        else: 
-            status = True
+	status = True
+	if myMqtt.getPayload() != None :
+	    topic,msg = myMqtt.getPayload().split('&')
+	    if topic == 'home/hallSensor' :
+		    if msg == 'o':
+			    status = False
+		    else: 
+			    status = True
 	
     return jsonify(status = status)
 
