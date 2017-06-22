@@ -97,7 +97,7 @@ def getData():
 
     myMqtt = Mqtt()
     status = True
-	if myMqtt.getPayload() != None :
+    if myMqtt.getPayload() != None :
 	    topic,msg = myMqtt.getPayload().split('&')
 	    if topic == 'home/hallSensor' :
 		    if msg == 'o':
