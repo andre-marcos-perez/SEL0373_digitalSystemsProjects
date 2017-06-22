@@ -65,11 +65,9 @@
 										</tr>
 										<tr>
 											<td>Fechadura</td>
-											{% if session.is_locked %}
-											<td><div class="switch"><label><i class="material-icons center">lock_outline</i><input type="checkbox"><span class="lever"></span><i class="material-icons center">lock_outline</i></label></div></td>
-											{% else %}
-											<td><div class="switch"><label><i class="material-icons center">lock_open</i><input type="checkbox"><span class="lever"></span><i class="material-icons center">lock_outline</i></label></div></td>
-											{% endif %}
+
+											<td><div class="switch"><label><i class="material-icons center">lock_open</i><input type="checkbox" id="lock" name="lock"><span class="lever"></span><i class="material-icons center">lock_outline</i></label></div></td>
+
 										</tr>
 										<tr>
 											<td>Alarme</td>
@@ -98,16 +96,28 @@
 	
 	{% block scripts %}
 	
-		<!--<script>-->
+		<script>
 	
-			//setInterval(function(){
+			setInterval(function(){
  
+				var info = {
+				'is_locked': {{ "true" if locker.is_locked else "false" }},
+				};
+				
+				if (info.is_locked) {
+    
+					$('#lock').prop('checked', true);
+					
+				} else { 
+ 
+					$('#lock').prop('checked', false);
+				}
+				
 				//$('#frame').attr("src", "/static/images/frame.jpg?timestamp=" + new Date().getTime());
 				//$('#frame').attr("src", "/static/images/frame.jpg");
 
- 
-			//},500);
+			},500);
 	
-		<!--</script>-->
+		</script>
 	
 	{% endblock %}
