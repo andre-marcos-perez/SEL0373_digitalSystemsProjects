@@ -88,8 +88,8 @@ class Mqtt(object):
     def publish(self, topic, msg):
 
         self.client.publish(topic, msg)
-        print topic + ": " + msg
-        return topic + "&" + msg
+        print topic + ": " + str(msg)
+        return topic + "&" + str(msg)
 
 """myMqtt = Mqtt()
 while True:
