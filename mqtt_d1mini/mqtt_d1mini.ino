@@ -94,7 +94,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     commandLED();
   }
   //Publish battery level
-  if ((char)payload[0] == '2'){
+  if ((char)payload[0] == 'b'){
       float value = ((analogRead(A0)-211)/76)*100 + 0.5;
       int value2 = value;
       if (value2 <= 30){
