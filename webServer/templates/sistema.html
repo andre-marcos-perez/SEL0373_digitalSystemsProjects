@@ -61,23 +61,21 @@
 									<tbody>
 										<tr>
 											<td>Porta</td>
-											<td><div class="switch"><label><i class="fa fa-square-o fa-2x"></i><input type="checkbox"><span class="lever"></span><i class="fa fa-square fa-2x"></i></label></div></td>
+											<td><div class="switch disabled"><label><i class="fa fa-square-o fa-2x"></i><input type="checkbox" id="door"><span class="lever"></span><i class="fa fa-square fa-2x"></i></label></div></td>
 										</tr>
 										<tr>
 											<td>Fechadura</td>
-											<td><div class="switch disabled"><label><i class="material-icons center">lock_open</i><input type="checkbox" id="lock"><span class="lever"></span><i class="material-icons center">lock_outline</i></label></div></td>
-
+											<form action="/getMotorStatus/" method="post">
+												<td><div class="switch"><label><i class="material-icons center">lock_open</i><input type="checkbox" id="motor"><span class="lever"></span><i class="material-icons center">lock_outline</i></label></div></td>
+											</form>
 										</tr>
 										<tr>
 											<td>Alarme</td>
-											<td><div class="switch"><label><i class="material-icons center">alarm_off</i><input type="checkbox"><span class="lever"></span><i class="material-icons center">alarm_on</i></label></div></td>
+											<td><div class="switch"><label><i class="material-icons center">alarm_off</i><input type="checkbox" id="alarm"><span class="lever"></span><i class="material-icons center">alarm_on</i></label></div></td>
 										</tr>
 										<tr>
 											<td>Bateria</td>
-											<td>
-											<!--<i class="material-icons center">battery_charging_full</i>-->
-											<p id="battery"></p>
-											<td>
+											<td><p id="battery"></p><td>
 										</tr>
 									</tbody>
 								</table>
@@ -98,43 +96,6 @@
 	
 	{% block scripts %}
 	
-		<script>
-		
-			//function update2(){
-
-				//$.getJSON("/getData/",function(data){ $('#result').text(data.status)});
-
-			//};
-			
-			function updatePub(){
-			
-				$.getJSON("/publishedData/",function(data){
-				
-					$('#battery').text(data.status);
-				}); 
-			};
-		
-			function updateSub(){
-
-				$.getJSON("/subscribedData/",function(data){ 
-					
-					if (data.status) {
-    
-						$('#lock').prop('checked', true);
-					
-					} else { 
- 
-						$('#lock').prop('checked', false);
-					}
-					
-				});
-			};
-		
-			$(document).ready(function(){
-				setInterval(updateSub,500);
-				setInterval(updatePub,800);
-			});
-	
-		</script>
+	<script type="text/javascript" src="/static/javascript/sistema_sensores.js"></script>
 	
 	{% endblock %}
