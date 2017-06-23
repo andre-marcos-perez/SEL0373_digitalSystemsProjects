@@ -92,27 +92,50 @@ def webRender_liveLocker():
     return render_template('liveLocker.html')
 
 # mqttData
-@flaskServer.route('/subscribedData/', methods=['GET'])
+@flaskServer.route('/updateDoorStatus/', methods=['GET'])
 def getSubData():
 
-    myMqtt = Mqtt()
+    mqtt = Mqtt()
     status = True
-    if myMqtt.getPayload() != None :
-	    topic,msg = myMqtt.getPayload().split('&')
+    if mqtt.getPayload() != None :
+	    topic,payload = mqtt.getPayload().split('&')
 	    if topic == 'home/hallSensor' :
-		    if msg == 'o':
+		    if payload == 'o':
 			    status = False
 		    else: 
 			    status = True
-	
+				
     return jsonify(status = status)
 
-@flaskServer.route('/publishedData/', methods=['GET'])
-def getPubData():
+@flaskServer.route('/getDoorStatus/', methods=['GET'])
+def getDoorStatus():
 
-    myMqtt = Mqtt()
-    topic,msg = myMqtt.publish('home/lock',2).split('&')
-    return jsonify(status = msg)
+    mqtt = Mqtt()
+	mqtt.publish('h')
+    topic,payload = mqtt.getPayload().split('&')	
+    return jsonify(status = int(payload))
+	
+@flaskServer.route('/getMotorStatus/', methods=['GET', 'POST'])
+def getMotorStatus():
+
+    mqtt = Mqtt()
+	mqtt.publish('m')
+	topic,payload = mqtt.getPayload().split('&')
+	if request.method == 'GET':
+        return jsonify(status = int(payload))
+	else:
+	    if payload == True :
+	        mqtt.publish(1)
+		else:
+		    mqtt.publish(0)
+	
+@flaskServer.route('/getBatteryStatus/', methods=['GET'])
+def getBatteryStatus():
+
+    mqtt = Mqtt()
+	mqtt.publish('b')
+    topic,payload = mqtt.getPayload().split('&')
+    return jsonify(status = int(payload))
 	
 if __name__ == '__main__':
     flaskServer.run(host='192.168.1.111', port=8186, debug='TRUE')
