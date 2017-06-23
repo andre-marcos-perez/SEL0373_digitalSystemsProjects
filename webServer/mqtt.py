@@ -73,7 +73,7 @@ class Mqtt(object):
     # Method: Class
 
     def getPayload(self):
-        """Mqtt.printPayload
+        """self.getPayload
         @Description:
 
         @Args:
@@ -85,11 +85,18 @@ class Mqtt(object):
 
         return Mqtt.message
 
-    def publish(self, topic, msg):
+    def publish(self, id):
+	    """self.publish
+        @Description:
 
-        self.client.publish(topic, msg)
-        print topic + ": " + str(msg)
-        return topic + "&" + str(msg)
+        @Args:
+            id:
+
+        @Returns:
+            self.message:
+        """
+
+        self.client.publish('home/lock', id)
 
 """myMqtt = Mqtt()
 while True:
