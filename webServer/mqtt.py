@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-from time import sleep
+import time
 
 
 # Mqtt Object
@@ -97,9 +97,9 @@ class Mqtt(object):
         """
 
         self.client.publish('home/lock', id)
+        time.sleep(2)
 
-"""myMqtt = Mqtt()
-while True:
-    myMqtt.publish('2')
-    sleep(2)
-"""
+#myMqtt = Mqtt()
+#while True:
+#    myMqtt.publish('b')
+#    time.sleep(2)

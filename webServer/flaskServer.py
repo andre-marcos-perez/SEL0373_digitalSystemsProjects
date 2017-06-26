@@ -1,7 +1,6 @@
 from flask import Flask, session, Response, render_template, request, jsonify
 from camera import Camera
 from mqtt import Mqtt
-from time import sleep
 
 
 flaskServer = Flask(__name__)
@@ -98,7 +97,6 @@ def webRender_liveLocker():
 def updateSensorStatus():
 
     status = True
-    topic = None
     if mqtt.getPayload() != None :
         topic,payload = mqtt.getPayload().split('&')
         if topic == 'home/hallSensor' :
@@ -106,39 +104,39 @@ def updateSensorStatus():
                 status = False
             else: 
                 status = True
-        if topic == 'home/battery' :
-            status = payload
 
-    return jsonify(status = status, topic = topic)
+    return jsonify(status = status)
 
 @flaskServer.route('/getDoorStatus/', methods=['GET'])
 def getDoorStatus():
 
     mqtt.publish('h')
-    topic,payload = mqtt.getPayload().split('&')
-    return jsonify(status = int(payload))
+    if mqtt.getPayload() != None :
+        topic,payload = mqtt.getPayload().split('&')
+        return jsonify(status = int(payload))
+    print 'Unable to get door status'
+    return jsonify(status = None)
+
 
 @flaskServer.route('/getMotorStatus/', methods=['GET', 'POST'])
 def getMotorStatus():
 
-    if request.method == 'GET':
-        mqtt.publish('m')
+    mqtt.publish('m')
+    if mqtt.getPayload() != None :
         topic,payload = mqtt.getPayload().split('&')
         return jsonify(status = int(payload))
-    else:
-        if payload == True :
-            mqtt.publish('1')
-        else:
-            mqtt.publish('0')
+    print 'Unable to get motor status'
+    return jsonify(status = None)
 
 @flaskServer.route('/getBatteryStatus/', methods=['GET'])
 def getBatteryStatus():
 
     mqtt.publish('b')
-    #if mqtt.getPayload() != None :
-     #   topic,payload = mqtt.getPayload().split('&')
-      #  return jsonify(status = payload)
-    #return jsonify(status = 'error')
+    if mqtt.getPayload() != None :
+        topic,payload = mqtt.getPayload().split('&')
+        return jsonify(status = payload)
+    print 'Unable to get battery status'
+    return jsonify(status = None)
 
 @flaskServer.errorhandler(404)
 def pageNorFound(e):
