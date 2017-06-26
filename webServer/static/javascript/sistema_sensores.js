@@ -61,10 +61,11 @@ function getBatteryStatus(){
 
 $(document).ready(function(){
 
-	getDoorStatus();
-	getMotorStatus();
+		
+	//getDoorStatus();
+	//getMotorStatus();
 	//alarm
 	getBatteryStatus();
 
-	setInterval(updateDoorStatus,500);
+	//setInterval(updateDoorStatus,500);
 });

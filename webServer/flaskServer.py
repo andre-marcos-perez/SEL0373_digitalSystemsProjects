@@ -1,10 +1,12 @@
 from flask import Flask, session, Response, render_template, request, jsonify
 from camera import Camera
 from mqtt import Mqtt
+from time import sleep
 
 
 flaskServer = Flask(__name__)
 flaskServer.secret_key = 'random key'
+mqtt = None
 
 # inicio
 @flaskServer.route('/')
@@ -93,9 +95,8 @@ def webRender_liveLocker():
 
 # mqttData
 @flaskServer.route('/updateDoorStatus/', methods=['GET'])
-def getSubData():
+def updateDoorStatus():
 
-    mqtt = Mqtt()
     status = True
     if mqtt.getPayload() != None :
         topic,payload = mqtt.getPayload().split('&')
@@ -110,7 +111,6 @@ def getSubData():
 @flaskServer.route('/getDoorStatus/', methods=['GET'])
 def getDoorStatus():
 
-    mqtt = Mqtt()
     mqtt.publish('h')
     topic,payload = mqtt.getPayload().split('&')	
     return jsonify(status = int(payload))
@@ -118,28 +118,30 @@ def getDoorStatus():
 @flaskServer.route('/getMotorStatus/', methods=['GET', 'POST'])
 def getMotorStatus():
 
-    mqtt = Mqtt()
-    mqtt.publish('m')
-    topic,payload = mqtt.getPayload().split('&')
     if request.method == 'GET':
+        mqtt.publish('m')
+        topic,payload = mqtt.getPayload().split('&')
         return jsonify(status = int(payload))
     else:
-        if payload == True :
-            mqtt.publish(1)
-        else:
-            mqtt.publish(0)
+        #if payload == True :
+        mqtt.publish(1)
+        #else:
+           # mqtt.publish(0)
 
 @flaskServer.route('/getBatteryStatus/', methods=['GET'])
 def getBatteryStatus():
 
-    mqtt = Mqtt()
     mqtt.publish('b')
-    topic,payload = mqtt.getPayload().split('&')
-    return jsonify(status = int(payload))
+    if mqtt.getPayload() != None :
+        topic,payload = mqtt.getPayload().split('&')
+        return jsonify(status = payload)
+    return jsonify(status = 'error')
 
 @flaskServer.errorhandler(404)
 def pageNorFound(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
+    mqtt = Mqtt()
     flaskServer.run(host='192.168.1.111', port=8186, debug='TRUE')
+
