@@ -94,8 +94,8 @@ def webRender_liveLocker():
     return render_template('liveLocker.html')
 
 # mqttData
-@flaskServer.route('/updateDoorStatus/', methods=['GET'])
-def updateDoorStatus():
+@flaskServer.route('/updateSensorStatus/', methods=['GET'])
+def updateSensorStatus():
 
     status = True
     if mqtt.getPayload() != None :
@@ -105,29 +105,30 @@ def updateDoorStatus():
                 status = False
             else: 
                 status = True
+        if topic == 'home/battery' :
+            status = payload
 
-    return jsonify(status = status)
+    return jsonify(status = status, topic = topic)
 
 @flaskServer.route('/getDoorStatus/', methods=['GET'])
 def getDoorStatus():
 
     mqtt.publish('h')
-    topic,payload = mqtt.getPayload().split('&')	
+    topic,payload = mqtt.getPayload().split('&')
     return jsonify(status = int(payload))
 
 @flaskServer.route('/getMotorStatus/', methods=['GET', 'POST'])
 def getMotorStatus():
 
-	mqtt = Mqtt()
     if request.method == 'GET':
         mqtt.publish('m')
         topic,payload = mqtt.getPayload().split('&')
         return jsonify(status = int(payload))
     else:
-        #if payload == True :
-        mqtt.publish('1')
-        #else:
-            #mqtt.publish('0')
+        if payload == True :
+            mqtt.publish('1')
+        else:
+            mqtt.publish('0')
 
 @flaskServer.route('/getBatteryStatus/', methods=['GET'])
 def getBatteryStatus():
