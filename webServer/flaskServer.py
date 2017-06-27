@@ -67,7 +67,7 @@ def videoStreaming():
 
 # liveCamera
 @flaskServer.route('/liveCamera/', methods=['GET', 'POST'])
-def webRender_liveCamera():	
+def webRender_liveCamera():
     if request.method == 'POST':
         if request.form['direction'] == 'up':
             Camera.move_camera('up')
@@ -123,10 +123,10 @@ def getMotorStatus():
         topic,payload = mqtt.getPayload().split('&')
         return jsonify(status = int(payload))
     else:
-        if payload == True :
-            mqtt.publish('1')
-        else:
-            mqtt.publish('0')
+        #if payload == True :
+        mqtt.publish('1')
+        #else:
+            #mqtt.publish('0')
 
 @flaskServer.route('/getBatteryStatus/', methods=['GET'])
 def getBatteryStatus():
