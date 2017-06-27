@@ -118,6 +118,7 @@ def getDoorStatus():
 @flaskServer.route('/getMotorStatus/', methods=['GET', 'POST'])
 def getMotorStatus():
 
+	mqtt = Mqtt()
     if request.method == 'GET':
         mqtt.publish('m')
         topic,payload = mqtt.getPayload().split('&')
