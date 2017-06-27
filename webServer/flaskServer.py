@@ -98,6 +98,7 @@ def webRender_liveLocker():
 def updateSensorStatus():
 
     status = True
+    topic = None
     if mqtt.getPayload() != None :
         topic,payload = mqtt.getPayload().split('&')
         if topic == 'home/hallSensor' :
@@ -134,10 +135,10 @@ def getMotorStatus():
 def getBatteryStatus():
 
     mqtt.publish('b')
-    if mqtt.getPayload() != None :
-        topic,payload = mqtt.getPayload().split('&')
-        return jsonify(status = payload)
-    return jsonify(status = 'error')
+    #if mqtt.getPayload() != None :
+     #   topic,payload = mqtt.getPayload().split('&')
+      #  return jsonify(status = payload)
+    #return jsonify(status = 'error')
 
 @flaskServer.errorhandler(404)
 def pageNorFound(e):
