@@ -1,17 +1,18 @@
-function updateDoorStatus(){
+function updateSensorStatus(){
 
-	$.getJSON("/updateDoorStatus/",function(data){
+	$.getJSON("/updateSensorStatus/",function(data){
 		
-		if (data.status == true) {
-
-			$('#door').prop('checked', true);
-		
+		if (data.topic == 'home/hallSensor'){
+			if (data.status == true) {
+				$('#door').prop('checked', true);
+			}
+			else if(data.status == false){ 
+				$('#door').prop('checked', false);
+			}
 		}
-		else if(data.status == false){ 
-
-			$('#door').prop('checked', false);
+		if (data.topic == 'home/battery'){
+			$('#battery').text(data.status);
 		}
-		
 	});
 };
 
@@ -65,7 +66,7 @@ $(document).ready(function(){
 	//getDoorStatus();
 	//getMotorStatus();
 	//alarm
-	getBatteryStatus();
+	//getBatteryStatus();
 
-	//setInterval(updateDoorStatus,500);
+	setInterval(updateSensorStatus,500);
 });
