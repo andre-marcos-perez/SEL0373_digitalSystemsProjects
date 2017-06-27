@@ -128,6 +128,12 @@ def getMotorStatus():
     print 'Unable to get motor status'
     return jsonify(status = None)
 
+@flaskServer.route('/setMotorStatus/', methods=['POST'])
+def setMotorStatus():
+
+    mqtt.publish('1')
+    return jsonify(status = None)
+
 @flaskServer.route('/getBatteryStatus/', methods=['GET'])
 def getBatteryStatus():
 
