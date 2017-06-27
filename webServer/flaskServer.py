@@ -23,7 +23,7 @@ def webRender_login():
     if request.method == 'POST':
         if request.form['userName'] != 'admin':
             error = 'Usuario ou senha invalidos!'
-	elif request.form['userPassword'] != 'admin':
+    elif request.form['userPassword'] != 'admin':
             error = 'Usuario ou senha invalidos!'
         else:
             session['is_logged'] = True
@@ -98,13 +98,13 @@ def getSubData():
     mqtt = Mqtt()
     status = True
     if mqtt.getPayload() != None :
-	    topic,payload = mqtt.getPayload().split('&')
-	    if topic == 'home/hallSensor' :
-		    if payload == 'o':
-			    status = False
-		    else: 
-			    status = True
-				
+        topic,payload = mqtt.getPayload().split('&')
+        if topic == 'home/hallSensor' :
+            if payload == 'o':
+                status = False
+            else: 
+                status = True
+
     return jsonify(status = status)
 
 @flaskServer.route('/getDoorStatus/', methods=['GET'])
@@ -114,7 +114,7 @@ def getDoorStatus():
     mqtt.publish('h')
     topic,payload = mqtt.getPayload().split('&')	
     return jsonify(status = int(payload))
-	
+
 @flaskServer.route('/getMotorStatus/', methods=['GET', 'POST'])
 def getMotorStatus():
 
@@ -127,19 +127,19 @@ def getMotorStatus():
         if payload == True :
             mqtt.publish(1)
         else:
-		    mqtt.publish(0)
-	
+            mqtt.publish(0)
+
 @flaskServer.route('/getBatteryStatus/', methods=['GET'])
 def getBatteryStatus():
 
     mqtt = Mqtt()
-	mqtt.publish('b')
+    mqtt.publish('b')
     topic,payload = mqtt.getPayload().split('&')
     return jsonify(status = int(payload))
-	
+
 @flaskServer.errorhandler(404)
 def pageNorFound(e):
     return render_template('404.html'), 404
-	
+
 if __name__ == '__main__':
     flaskServer.run(host='192.168.1.111', port=8186, debug='TRUE')
