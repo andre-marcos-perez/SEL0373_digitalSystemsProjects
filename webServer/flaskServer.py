@@ -23,7 +23,7 @@ def webRender_login():
     if request.method == 'POST':
         if request.form['userName'] != 'admin':
             error = 'Usuario ou senha invalidos!'
-    elif request.form['userPassword'] != 'admin':
+        elif request.form['userPassword'] != 'admin':
             error = 'Usuario ou senha invalidos!'
         else:
             session['is_logged'] = True
