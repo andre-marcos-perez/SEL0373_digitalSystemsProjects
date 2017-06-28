@@ -97,22 +97,35 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if ((char)payload[0] == 'b'){
       float value = ((analogRead(A0)-211)/76)*100 + 0.5;
       int value2 = value;
+      
+      char str[3];
+      sprintf(str, "%i", value2);
       if (value2 <= 30){
         digitalWrite(D1, HIGH);  
       }
-    //  char result[6];
-    //  dtostrf(value2, 6, 2, result); 
-      snprintf (msg, 10,"%d", value2);
+      snprintf (msg, 10, str);
+      Serial.print(msg);
+      Serial.println();
       client.publish("home/battery", msg);
       commandLED();
   }
   if ((char)payload[0] == 'm'){
-      snprintf (msg, 10,"%d", motor_flag);
+      if(motor_flag == true){
+        snprintf (msg, 10, "1");
+        }
+        else{
+          snprintf (msg, 10, "0");
+        }
       client.publish("home/motor", msg);
       commandLED();
   }
   if ((char)payload[0] == 'h'){
-      snprintf (msg, 10,"%d", hall_flag);
+        if(hall_flag == true){
+          snprintf (msg, 10, "1");
+        }
+        else{
+          snprintf (msg, 10, "0");
+         }
       client.publish("home/hall", msg);
       commandLED();
   }
